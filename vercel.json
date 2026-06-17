@@ -1,7 +1,6 @@
 
 {
   "version": 2,
-  "name": "gustux-cl",
   "builds": [
     {
       "src": "api/*.js",
@@ -13,7 +12,8 @@
     }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/api/ticket", "dest": "/api/ticket.js" },
+    { "src": "/api/appointment", "dest": "/api/appointment.js" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
