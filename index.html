@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gustux — Soluciones Informáticas para PYMEs</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <style>
 :root{
   --bg:#080c14;--bg2:#0d1320;--card:#111827;--card2:#1a2236;
@@ -19,8 +18,6 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
-
-/* NAV */
 nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(8,12,20,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
 .nav-inner{max-width:1280px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:68px;}
 .logo{display:flex;align-items:center;gap:10px;cursor:pointer;}
@@ -31,16 +28,10 @@ nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(8,12,20,0.92);b
 .nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;font-weight:500;padding:7px 14px;border-radius:8px;transition:.2s;}
 .nav-links a:hover{color:var(--text);background:rgba(255,255,255,0.05);}
 .nav-actions{display:flex;gap:10px;align-items:center;}
-.nav-ghost{background:transparent;border:1px solid var(--border2);color:var(--muted);padding:8px 18px;border-radius:8px;cursor:pointer;font-size:.85rem;font-weight:600;transition:.2s;}
-.nav-ghost:hover{border-color:var(--accent);color:var(--accent);}
 .nav-btn{background:var(--grad);border:none;color:#fff;padding:9px 22px;border-radius:8px;cursor:pointer;font-weight:700;font-size:.88rem;box-shadow:0 4px 16px rgba(37,99,235,.3);transition:.2s;}
 .nav-btn:hover{opacity:.9;transform:translateY(-1px);}
-
-/* PAGES */
 .page{display:none;}
 .page.active{display:block;}
-
-/* HERO */
 .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px;position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:900px;height:900px;background:radial-gradient(circle,rgba(37,99,235,.12) 0%,transparent 65%);pointer-events:none;}
 .hero-inner{position:relative;z-index:1;max-width:860px;}
@@ -52,23 +43,20 @@ nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(8,12,20,0.92);b
 .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:64px;}
 .btn-primary{background:var(--grad);color:#fff;padding:14px 30px;border-radius:10px;border:none;font-weight:700;font-size:.95rem;cursor:pointer;transition:.2s;box-shadow:0 4px 20px rgba(37,99,235,.35);}
 .btn-primary:hover{opacity:.92;transform:translateY(-2px);}
-.btn-primary:disabled{opacity:.6;cursor:not-allowed;transform:none;}
 .btn-outline{background:transparent;color:var(--text);padding:14px 30px;border-radius:10px;border:1px solid var(--border2);font-weight:600;font-size:.95rem;cursor:pointer;transition:.2s;}
 .btn-outline:hover{border-color:var(--accent2);color:var(--accent2);}
+.btn-wsp{background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;padding:14px 30px;border-radius:10px;border:none;font-weight:700;font-size:.95rem;cursor:pointer;transition:.2s;box-shadow:0 4px 20px rgba(37,211,102,.3);}
+.btn-wsp:hover{opacity:.92;transform:translateY(-2px);}
 .stats-row{display:flex;justify-content:center;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:16px;overflow:hidden;max-width:680px;margin:0 auto;}
 .stat-item{flex:1;padding:20px 16px;text-align:center;border-right:1px solid var(--border);}
 .stat-item:last-child{border-right:none;}
 .stat-num{font-size:1.8rem;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .stat-label{font-size:.75rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-top:2px;}
-
-/* SECTIONS */
 section{padding:90px 24px;}
 .sec{max-width:1280px;margin:0 auto;}
 .sec-label{display:block;text-align:center;font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:3px;color:var(--accent2);margin-bottom:14px;}
 .sec-title{text-align:center;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;letter-spacing:-1px;margin-bottom:14px;}
 .sec-sub{text-align:center;color:var(--muted);max-width:520px;margin:0 auto 56px;font-size:.95rem;line-height:1.75;}
-
-/* SERVICES GRID */
 .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1px;background:var(--border);border-radius:20px;overflow:hidden;border:1px solid var(--border);}
 .svc-card{background:var(--card);padding:30px;transition:.25s;position:relative;overflow:hidden;}
 .svc-card:hover{background:var(--card2);}
@@ -77,8 +65,6 @@ section{padding:90px 24px;}
 .svc-card p{font-size:.86rem;color:var(--muted);line-height:1.65;}
 .svc-price{margin-top:14px;font-size:.9rem;font-weight:800;color:var(--accent2);}
 .tag{font-size:.7rem;font-weight:700;padding:2px 9px;border-radius:999px;background:rgba(37,99,235,.08);color:var(--accent2);border:1px solid rgba(37,99,235,.15);margin:2px;}
-
-/* PRODUCTS */
 .prod-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px;}
 .prod-card{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:.25s;}
 .prod-card:hover{border-color:var(--border2);transform:translateY(-3px);}
@@ -90,8 +76,6 @@ section{padding:90px 24px;}
 .prod-price{font-size:1.1rem;font-weight:900;color:var(--accent2);}
 .prod-btn{background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.25);color:var(--accent2);padding:6px 14px;border-radius:7px;font-size:.78rem;font-weight:700;cursor:pointer;transition:.2s;}
 .prod-btn:hover{background:var(--grad);color:#fff;border-color:transparent;}
-
-/* ABOUT */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:80px;}
 @media(max-width:860px){.about-grid{grid-template-columns:1fr;}}
 .about-text h2{font-size:clamp(1.6rem,2.5vw,2.4rem);font-weight:900;letter-spacing:-1px;margin-bottom:18px;line-height:1.2;}
@@ -113,27 +97,17 @@ section{padding:90px 24px;}
 .team-card .role{font-size:.78rem;color:var(--accent2);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;}
 .team-card p{font-size:.83rem;color:var(--muted);line-height:1.6;}
 .team-skills{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-top:12px;}
-
-/* CONTACT */
-.contact-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
 @media(max-width:860px){.contact-grid{grid-template-columns:1fr;}}
-.form-box{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px;}
-.form-box h3{font-size:1.2rem;font-weight:800;margin-bottom:4px;}
-.form-box .sub{color:var(--muted);font-size:.85rem;margin-bottom:26px;}
-.fg{margin-bottom:16px;}
-.fg label{display:block;font-size:.75rem;font-weight:700;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;}
-.fg input,.fg select,.fg textarea{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:11px 14px;border-radius:9px;font-size:.9rem;outline:none;transition:.2s;font-family:inherit;}
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--accent);}
-.fg textarea{resize:vertical;min-height:100px;}
-.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-@media(max-width:600px){.fg-row{grid-template-columns:1fr;}}
 .contact-side{display:flex;flex-direction:column;gap:16px;}
 .info-block{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 20px;display:flex;gap:14px;}
 .ib-icon{width:40px;height:40px;background:rgba(37,99,235,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
 .ib-text h4{font-size:.88rem;font-weight:700;margin-bottom:2px;}
 .ib-text p{font-size:.82rem;color:var(--muted);line-height:1.5;}
-
-/* ADMIN */
+.wsp-card{background:linear-gradient(135deg,rgba(37,211,102,.1),rgba(18,140,126,.1));border:1px solid rgba(37,211,102,.3);border-radius:16px;padding:24px;text-align:center;}
+.wsp-card h3{font-size:1.1rem;font-weight:800;margin-bottom:8px;}
+.wsp-card p{font-size:.85rem;color:var(--muted);margin-bottom:16px;line-height:1.6;}
+.wsp-number{font-size:1.3rem;font-weight:900;color:#25d366;margin-bottom:16px;}
 .admin-layout{display:grid;grid-template-columns:250px 1fr;min-height:calc(100vh - 68px);margin-top:68px;}
 .sidebar{background:var(--bg2);border-right:1px solid var(--border);padding:20px 0;position:sticky;top:68px;height:calc(100vh - 68px);overflow-y:auto;}
 .sb-logo{padding:4px 20px 20px;border-bottom:1px solid var(--border);margin-bottom:8px;}
@@ -147,16 +121,11 @@ section{padding:90px 24px;}
 .admin-hdr h2{font-size:1.5rem;font-weight:900;letter-spacing:-.5px;}
 .admin-hdr p{color:var(--muted);font-size:.85rem;margin-top:3px;}
 @media(max-width:900px){.admin-layout{grid-template-columns:1fr;}.sidebar{display:none;}}
-
-/* DASH */
 .dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-bottom:24px;}
 .dc{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 22px;}
 .dc .dcl{font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
 .dc .dcv{font-size:1.9rem;font-weight:900;margin:8px 0 2px;letter-spacing:-1px;}
 .dc .dcc{font-size:.78rem;color:var(--success);}
-.dc .dcc.neg{color:var(--danger);}
-
-/* TABLE */
 .tbl-wrap{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:20px;}
 .tbl-hdr{padding:16px 22px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);}
 .tbl-hdr h3{font-size:.95rem;font-weight:800;}
@@ -171,9 +140,6 @@ tr:hover td{background:rgba(37,99,235,.03);}
 .bg-red{background:rgba(239,68,68,.12);color:#f87171;}
 .bg-blue{background:rgba(37,99,235,.12);color:#60a5fa;}
 .bg-gray{background:rgba(122,139,168,.12);color:var(--muted);}
-.bg-purple{background:rgba(99,102,241,.12);color:#a5b4fc;}
-
-/* ACCOUNTING */
 .acc-top{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px;}
 @media(max-width:700px){.acc-top{grid-template-columns:1fr;}}
 .acc-c{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 22px;}
@@ -182,35 +148,6 @@ tr:hover td{background:rgba(37,99,235,.03);}
 .acc-c.inc .acv{color:var(--success);}
 .acc-c.exp .acv{color:var(--danger);}
 .acc-c.bal .acv{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-
-/* TICKETS */
-.tkt-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:12px;display:flex;gap:16px;}
-.tkt-dot{width:10px;height:10px;border-radius:50%;margin-top:6px;flex-shrink:0;}
-.tkt-body{flex:1;}
-.tkt-id{font-size:.72rem;font-weight:700;color:var(--muted);margin-bottom:3px;}
-.tkt-body h4{font-weight:800;font-size:.95rem;margin-bottom:4px;}
-.tkt-body p{font-size:.83rem;color:var(--muted);}
-.tkt-meta{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
-.tkt-action{background:rgba(255,255,255,.05);border:1px solid var(--border2);color:var(--muted);padding:4px 12px;border-radius:7px;font-size:.75rem;font-weight:700;cursor:pointer;transition:.2s;}
-.tkt-action:hover{border-color:var(--accent2);color:var(--accent2);}
-
-/* CALENDAR */
-.cal-wrap{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;}
-.cal-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
-.cal-hdr h4{font-weight:800;font-size:.95rem;}
-.cal-nav{background:none;border:1px solid var(--border);color:var(--muted);width:28px;height:28px;border-radius:7px;cursor:pointer;}
-.cal-days-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;text-align:center;}
-.cal-dn{font-size:.65rem;font-weight:700;color:var(--muted2);padding:4px 0;text-transform:uppercase;}
-.cal-d{font-size:.78rem;padding:7px 4px;border-radius:7px;cursor:pointer;transition:.15s;color:var(--muted);}
-.cal-d:hover{background:rgba(37,99,235,.1);color:var(--text);}
-.cal-d.today{background:var(--grad);color:#fff;font-weight:900;}
-.cal-d.has{position:relative;}
-.cal-d.has::after{content:'';position:absolute;bottom:2px;left:50%;transform:translateX(-50%);width:3px;height:3px;background:var(--accent2);border-radius:50%;}
-.cal-d.om{color:var(--border2);}
-.agenda-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:20px;}
-@media(max-width:900px){.agenda-grid{grid-template-columns:1fr;}}
-
-/* LOGIN */
 .login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(ellipse at 50% -10%,rgba(37,99,235,.1),transparent 65%);}
 .login-box{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:42px;width:100%;max-width:420px;box-shadow:0 24px 80px rgba(0,0,0,.5);}
 .lb-logo{text-align:center;margin-bottom:30px;}
@@ -222,32 +159,23 @@ tr:hover td{background:rgba(37,99,235,.03);}
 .login-box .sub{color:var(--muted);font-size:.85rem;margin-bottom:22px;}
 .alert{padding:11px 14px;border-radius:9px;font-size:.83rem;margin-bottom:14px;}
 .alert.err{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);color:#fca5a5;}
-.alert.ok{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);color:#6ee7b7;}
-.demo-hint{background:rgba(37,99,235,.07);border:1px solid rgba(37,99,235,.2);border-radius:9px;padding:10px 14px;font-size:.78rem;color:var(--muted);text-align:center;margin-top:14px;}
-.demo-hint strong{color:var(--accent2);}
-
-/* MODAL */
+.fg{margin-bottom:16px;}
+.fg label{display:block;font-size:.75rem;font-weight:700;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;}
+.fg input{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:11px 14px;border-radius:9px;font-size:.9rem;outline:none;transition:.2s;font-family:inherit;}
+.fg input:focus{border-color:var(--accent);}
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:2000;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);}
 .modal-overlay.open{display:flex;}
-.modal{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:36px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;box-shadow:0 32px 80px rgba(0,0,0,.6);}
+.modal{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:36px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;}
 .modal-hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;}
 .modal h3{font-size:1.15rem;font-weight:900;}
 .modal .sub{color:var(--muted);font-size:.83rem;margin-top:4px;}
-.modal-close{background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--muted);width:30px;height:30px;border-radius:7px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:.2s;}
-.modal-close:hover{color:var(--text);}
-
-/* FORM STATES */
-.form-msg{padding:12px 16px;border-radius:9px;font-size:.85rem;margin-top:12px;display:none;}
-.form-msg.ok{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);color:#6ee7b7;display:block;}
-.form-msg.err{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#fca5a5;display:block;}
-.spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;margin-right:8px;vertical-align:middle;}
-@keyframes spin{to{transform:rotate(360deg);}}
-
-/* TOAST */
-.toast{position:fixed;bottom:28px;right:28px;background:var(--card2);border:1px solid var(--border2);border-radius:14px;padding:14px 20px;z-index:9999;display:flex;gap:12px;align-items:center;transform:translateY(80px);opacity:0;transition:.3s cubic-bezier(.34,1.56,.64,1);box-shadow:0 12px 40px rgba(0,0,0,.5);}
+.modal-close{background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--muted);width:30px;height:30px;border-radius:7px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;}
+.fg select,.fg textarea{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:11px 14px;border-radius:9px;font-size:.9rem;outline:none;font-family:inherit;}
+.fg textarea{resize:vertical;min-height:100px;}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:600px){.fg-row{grid-template-columns:1fr;}}
+.toast{position:fixed;bottom:28px;right:28px;background:var(--card2);border:1px solid var(--border2);border-radius:14px;padding:14px 20px;z-index:9999;display:flex;gap:12px;align-items:center;transform:translateY(80px);opacity:0;transition:.3s cubic-bezier(.34,1.56,.64,1);}
 .toast.show{transform:translateY(0);opacity:1;}
-
-/* FOOTER */
 footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24px 32px;}
 .footer-inner{max-width:1280px;margin:0 auto;}
 .footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
@@ -261,11 +189,16 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
 .footer-bottom p{font-size:.78rem;color:var(--muted2);}
 .footer-badges{display:flex;gap:8px;}
 .fb{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:.72rem;color:var(--muted2);font-weight:600;}
+/* WSP FLOAT */
+.wsp-float{position:fixed;bottom:28px;right:28px;width:56px;height:56px;background:linear-gradient(135deg,#25d366,#128c7e);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;cursor:pointer;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:999;transition:.2s;text-decoration:none;}
+.wsp-float:hover{transform:scale(1.1);}
 </style>
 </head>
 <body>
 
-<!-- ── NAV ── -->
+<!-- WSP FLOTANTE -->
+<a href="https://wa.me/56945851349?text=Hola%20Gustux%2C%20me%20interesa%20más%20información%20sobre%20sus%20servicios" target="_blank" class="wsp-float">💬</a>
+
 <nav>
   <div class="nav-inner">
     <div class="logo" onclick="showPage('home')">
@@ -280,13 +213,12 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
       <li><a href="#" onclick="showPage('contact')">Contacto</a></li>
     </ul>
     <div class="nav-actions">
-      <button class="nav-ghost" onclick="openModal('modal-ticket')">🎫 Soporte</button>
       <button class="nav-btn" onclick="showPage('login')">🔐 Acceder</button>
     </div>
   </div>
 </nav>
 
-<!-- ══ HOME ══ -->
+<!-- HOME -->
 <div id="page-home" class="page active">
   <div class="hero">
     <div class="hero-inner">
@@ -295,7 +227,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
       <p>Auditorías, desarrollo web, aplicaciones, dashboards inteligentes y automatizaciones. Soluciones informáticas diseñadas para PYMEs que quieren crecer.</p>
       <div class="hero-btns">
         <button class="btn-primary" onclick="showPage('services')">Explorar Servicios →</button>
-        <button class="btn-outline" onclick="openModal('modal-schedule')">Agendar Consulta Gratis</button>
+        <a href="https://wa.me/56945851349?text=Hola%20Gustux%2C%20quiero%20una%20consulta%20gratuita" target="_blank"><button class="btn-wsp">💬 Consulta por WhatsApp</button></a>
       </div>
       <div class="stats-row">
         <div class="stat-item"><div class="stat-num">+120</div><div class="stat-label">Clientes</div></div>
@@ -313,9 +245,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
       <p class="sec-sub">Soluciones tecnológicas completas bajo un mismo techo.</p>
       <div class="svc-grid">
         <div class="svc-card"><div class="svc-icon">🔍</div><h3>Auditoría TI</h3><p>Evaluación 360° de infraestructura, seguridad y procesos.</p><div class="svc-price">Desde $250.000</div></div>
-        <div class="svc-card"><div class="svc-icon">🌐</div><h3>Sitios Web</h3><p>Diseño y desarrollo de sitios profesionales optimizados para convertir.</p><div class="svc-price">Desde $180.000</div></div>
+        <div class="svc-card"><div class="svc-icon">🌐</div><h3>Sitios Web</h3><p>Diseño y desarrollo de sitios profesionales optimizados.</p><div class="svc-price">Desde $180.000</div></div>
         <div class="svc-card"><div class="svc-icon">📱</div><h3>Aplicaciones</h3><p>Apps web y móviles a medida para digitalizar tus procesos.</p><div class="svc-price">Desde $450.000</div></div>
-        <div class="svc-card"><div class="svc-icon">📊</div><h3>Dashboards BI</h3><p>Transforma tus Excel en dashboards interactivos en tiempo real.</p><div class="svc-price">Desde $120.000</div></div>
+        <div class="svc-card"><div class="svc-icon">📊</div><h3>Dashboards BI</h3><p>Transforma tus Excel en dashboards interactivos.</p><div class="svc-price">Desde $120.000</div></div>
         <div class="svc-card"><div class="svc-icon">📈</div><h3>Auditoría SEO</h3><p>Posicionamos tu sitio en Google con estrategias probadas.</p><div class="svc-price">Desde $150.000</div></div>
         <div class="svc-card"><div class="svc-icon">⚙️</div><h3>Automatizaciones</h3><p>Eliminamos tareas repetitivas con flujos inteligentes.</p><div class="svc-price">Desde $200.000</div></div>
       </div>
@@ -327,10 +259,10 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
     <div class="sec" style="text-align:center">
       <span class="sec-label">¿Listo?</span>
       <h2 class="sec-title">Potencia tu PYME hoy mismo</h2>
-      <p class="sec-sub">Primera consulta sin costo. Evaluamos tu empresa y te proponemos un plan concreto.</p>
+      <p class="sec-sub">Primera consulta sin costo. Escríbenos por WhatsApp ahora.</p>
       <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-        <button class="btn-primary" onclick="openModal('modal-schedule')">Agendar Consulta Gratuita</button>
-        <button class="btn-outline" onclick="showPage('contact')">Contactar Ahora</button>
+        <a href="https://wa.me/56945851349?text=Hola%20Gustux%2C%20quiero%20una%20consulta%20gratuita" target="_blank"><button class="btn-wsp">💬 Escribir por WhatsApp</button></a>
+        <button class="btn-outline" onclick="showPage('contact')">Ver Contacto</button>
       </div>
     </div>
   </section>
@@ -344,7 +276,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
         </div>
         <div class="ft-col"><h5>Servicios</h5><a href="#">Auditoría TI</a><a href="#">Sitios Web</a><a href="#">Aplicaciones</a><a href="#">Dashboards</a><a href="#">SEO & Meta</a></div>
         <div class="ft-col"><h5>Empresa</h5><a href="#" onclick="showPage('about')">Nosotros</a><a href="#" onclick="showPage('products')">Productos</a><a href="#" onclick="showPage('contact')">Contacto</a><a href="#" onclick="showPage('login')">Panel Admin</a></div>
-        <div class="ft-col"><h5>Contacto</h5><a href="#">contacto@gustux.cl</a><a href="#">+56 9 XXXX XXXX</a><a href="#">Santiago, Chile</a><a href="#">Lun–Vie 9–18h</a></div>
+        <div class="ft-col"><h5>Contacto</h5><a href="mailto:gusmastertux@gmail.com">gusmastertux@gmail.com</a><a href="https://wa.me/56945851349" target="_blank">+56 9 4585 1349</a><a href="#">Santiago, Chile</a><a href="#">Lun–Vie 9–18h</a></div>
       </div>
       <div class="footer-bottom">
         <p>© 2025 Gustux SpA. Todos los derechos reservados.</p>
@@ -354,7 +286,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
   </footer>
 </div>
 
-<!-- ══ SERVICES ══ -->
+<!-- SERVICES -->
 <div id="page-services" class="page" style="padding-top:68px">
   <section>
     <div class="sec">
@@ -367,39 +299,41 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
         <div class="svc-card"><div class="svc-icon">🎯</div><h3>Auditoría Meta Business</h3><p>Campañas, pixel y embudo de conversión Facebook/Instagram.</p><div style="margin-top:10px"><span class="tag">Facebook</span><span class="tag">Instagram</span></div><div class="svc-price">Desde $130.000 CLP</div></div>
         <div class="svc-card"><div class="svc-icon">🏢</div><h3>Auditoría de Negocios</h3><p>Procesos internos, flujo de trabajo y digitalización.</p><div style="margin-top:10px"><span class="tag">Procesos</span><span class="tag">Digital</span></div><div class="svc-price">Desde $200.000 CLP</div></div>
         <div class="svc-card"><div class="svc-icon">🌐</div><h3>Sitios Web</h3><p>Landing pages, corporativos y e-commerce responsive.</p><div style="margin-top:10px"><span class="tag">React</span><span class="tag">WordPress</span></div><div class="svc-price">Desde $180.000 CLP</div></div>
-        <div class="svc-card"><div class="svc-icon">📱</div><h3>Aplicaciones</h3><p>Apps iOS/Android y web progresivas a medida.</p><div style="margin-top:10px"><span class="tag">iOS</span><span class="tag">Android</span><span class="tag">PWA</span></div><div class="svc-price">Desde $450.000 CLP</div></div>
+        <div class="svc-card"><div class="svc-icon">📱</div><h3>Aplicaciones</h3><p>Apps iOS/Android y web progresivas a medida.</p><div style="margin-top:10px"><span class="tag">iOS</span><span class="tag">Android</span></div><div class="svc-price">Desde $450.000 CLP</div></div>
         <div class="svc-card"><div class="svc-icon">📊</div><h3>Dashboards & BI</h3><p>De Excel a dashboards interactivos con reportes automáticos.</p><div style="margin-top:10px"><span class="tag">Power BI</span><span class="tag">Custom</span></div><div class="svc-price">Desde $120.000 CLP</div></div>
-        <div class="svc-card"><div class="svc-icon">⚙️</div><h3>Automatizaciones</h3><p>Flujos automáticos para email, facturación y más.</p><div style="margin-top:10px"><span class="tag">Make</span><span class="tag">Zapier</span><span class="tag">n8n</span></div><div class="svc-price">Desde $200.000 CLP</div></div>
+        <div class="svc-card"><div class="svc-icon">⚙️</div><h3>Automatizaciones</h3><p>Flujos automáticos para email, facturación y más.</p><div style="margin-top:10px"><span class="tag">Make</span><span class="tag">Zapier</span></div><div class="svc-price">Desde $200.000 CLP</div></div>
         <div class="svc-card"><div class="svc-icon">🧩</div><h3>Extensiones</h3><p>Chrome/Firefox personalizadas para tu equipo.</p><div style="margin-top:10px"><span class="tag">Chrome</span><span class="tag">Firefox</span></div><div class="svc-price">Desde $300.000 CLP</div></div>
         <div class="svc-card"><div class="svc-icon">🖥️</div><h3>Hardware & Redes</h3><p>Redes, servidores y mantención de equipos.</p><div style="margin-top:10px"><span class="tag">Redes</span><span class="tag">Servidores</span></div><div class="svc-price">Consultar</div></div>
         <div class="svc-card"><div class="svc-icon">🔒</div><h3>Ciberseguridad</h3><p>Auditorías de seguridad, VPN y capacitación.</p><div style="margin-top:10px"><span class="tag">Pentesting</span><span class="tag">VPN</span></div><div class="svc-price">Desde $280.000 CLP</div></div>
-        <div class="svc-card"><div class="svc-icon">☁️</div><h3>Cloud & Hosting</h3><p>Migración a AWS, GCP o Azure con monitoreo.</p><div style="margin-top:10px"><span class="tag">AWS</span><span class="tag">GCP</span><span class="tag">Azure</span></div><div class="svc-price">Desde $160.000 CLP</div></div>
+        <div class="svc-card"><div class="svc-icon">☁️</div><h3>Cloud & Hosting</h3><p>Migración a AWS, GCP o Azure con monitoreo.</p><div style="margin-top:10px"><span class="tag">AWS</span><span class="tag">GCP</span></div><div class="svc-price">Desde $160.000 CLP</div></div>
       </div>
-      <div style="text-align:center;margin-top:40px"><button class="btn-primary" onclick="openModal('modal-schedule')">Agendar Consulta Gratuita →</button></div>
+      <div style="text-align:center;margin-top:40px">
+        <a href="https://wa.me/56945851349?text=Hola%20Gustux%2C%20quiero%20cotizar%20un%20servicio" target="_blank"><button class="btn-wsp">💬 Cotizar por WhatsApp →</button></a>
+      </div>
     </div>
   </section>
 </div>
 
-<!-- ══ PRODUCTS ══ -->
+<!-- PRODUCTS -->
 <div id="page-products" class="page" style="padding-top:68px">
   <section>
     <div class="sec">
       <span class="sec-label">Entregables</span>
       <h2 class="sec-title">Productos & Soluciones</h2>
       <p class="sec-sub">Paquetes listos para implementar desde el primer día.</p>
-      <div class="prod-grid" id="products-public">
-        <div class="prod-card"><div class="prod-img" style="background:linear-gradient(135deg,#1e3a5f,#0c4a6e)">📊</div><div class="prod-body"><h3>Dashboard Ejecutivo</h3><p>KPIs, ventas e inventario. Integración Excel y Google Sheets.</p><div class="prod-footer"><span class="prod-price">$85.000</span><button class="prod-btn" onclick="openModal('modal-schedule')">Cotizar</button></div></div></div>
-        <div class="prod-card"><div class="prod-img" style="background:linear-gradient(135deg,#1a1f3d,#2d1b69)">🛒</div><div class="prod-body"><h3>Tienda Online</h3><p>E-commerce con carrito, pago y panel admin.</p><div class="prod-footer"><span class="prod-price">$320.000</span><button class="prod-btn" onclick="openModal('modal-schedule')">Cotizar</button></div></div></div>
-        <div class="prod-card"><div class="prod-img" style="background:linear-gradient(135deg,#0f2027,#203a43)">📋</div><div class="prod-body"><h3>CRM para PYMEs</h3><p>Gestión de clientes y pipeline de ventas.</p><div class="prod-footer"><span class="prod-price">$280.000</span><button class="prod-btn" onclick="openModal('modal-schedule')">Cotizar</button></div></div></div>
-        <div class="prod-card"><div class="prod-img" style="background:linear-gradient(135deg,#064e3b,#065f46)">🤖</div><div class="prod-body"><h3>Bot de WhatsApp</h3><p>Atención automática 24/7 y agendamiento.</p><div class="prod-footer"><span class="prod-price">$190.000</span><button class="prod-btn" onclick="openModal('modal-schedule')">Cotizar</button></div></div></div>
-        <div class="prod-card"><div class="prod-img" style="background:linear-gradient(135deg,#431407,#7c2d12)">📄</div><div class="prod-body"><h3>Sistema de Facturación</h3><p>Boletas, facturas e integración SII.</p><div class="prod-footer"><span class="prod-price">$250.000</span><button class="prod-btn" onclick="openModal('modal-schedule')">Cotizar</button></div></div></div>
-        <div class="prod-card"><div class="prod-img" style="background:linear-gradient(135deg,#312e81,#4c1d95)">🧩</div><div class="prod-body"><h3>Extensión Productividad</h3><p>Chrome personalizada para tu equipo.</p><div class="prod-footer"><span class="prod-price">$150.000</span><button class="prod-btn" onclick="openModal('modal-schedule')">Cotizar</button></div></div></div>
+      <div class="prod-grid">
+        <div class="prod-card"><div class="prod-img" style="background:linear-gradient(135deg,#1e3a5f,#0c4a6e)">📊</div><div class="prod-body"><h3>Dashboard Ejecutivo</h3><p>KPIs, ventas e inventario. Integración Excel y Google Sheets.</p><div class="prod-footer"><span class="prod-price">$85.000</span><a href="https://wa.me/56945851349?text=Hola%2C%20me%20interesa%20el%20Dashboard%20Ejecutivo" target="_blank"><button class="prod-btn">Cotizar</button></a></div></div></div>
+        <div class="prod-card"><div class="prod-img" style="background:linear-gradient(135deg,#1a1f3d,#2d1b69)">🛒</div><div class="prod-body"><h3>Tienda Online</h3><p>E-commerce con carrito, pago y panel admin.</p><div class="prod-footer"><span class="prod-price">$320.000</span><a href="https://wa.me/56945851349?text=Hola%2C%20me%20interesa%20la%20Tienda%20Online" target="_blank"><button class="prod-btn">Cotizar</button></a></div></div></div>
+        <div class="prod-card"><div class="prod-img" style="background:linear-gradient(135deg,#0f2027,#203a43)">📋</div><div class="prod-body"><h3>CRM para PYMEs</h3><p>Gestión de clientes y pipeline de ventas.</p><div class="prod-footer"><span class="prod-price">$280.000</span><a href="https://wa.me/56945851349?text=Hola%2C%20me%20interesa%20el%20CRM" target="_blank"><button class="prod-btn">Cotizar</button></a></div></div></div>
+        <div class="prod-card"><div class="prod-img" style="background:linear-gradient(135deg,#064e3b,#065f46)">🤖</div><div class="prod-body"><h3>Bot de WhatsApp</h3><p>Atención automática 24/7 y agendamiento.</p><div class="prod-footer"><span class="prod-price">$190.000</span><a href="https://wa.me/56945851349?text=Hola%2C%20me%20interesa%20el%20Bot%20de%20WhatsApp" target="_blank"><button class="prod-btn">Cotizar</button></a></div></div></div>
+        <div class="prod-card"><div class="prod-img" style="background:linear-gradient(135deg,#431407,#7c2d12)">📄</div><div class="prod-body"><h3>Sistema de Facturación</h3><p>Boletas, facturas e integración SII.</p><div class="prod-footer"><span class="prod-price">$250.000</span><a href="https://wa.me/56945851349?text=Hola%2C%20me%20interesa%20el%20Sistema%20de%20Facturación" target="_blank"><button class="prod-btn">Cotizar</button></a></div></div></div>
+        <div class="prod-card"><div class="prod-img" style="background:linear-gradient(135deg,#312e81,#4c1d95)">🧩</div><div class="prod-body"><h3>Extensión Productividad</h3><p>Chrome personalizada para tu equipo.</p><div class="prod-footer"><span class="prod-price">$150.000</span><a href="https://wa.me/56945851349?text=Hola%2C%20me%20interesa%20la%20Extensión%20de%20Productividad" target="_blank"><button class="prod-btn">Cotizar</button></a></div></div></div>
       </div>
     </div>
   </section>
 </div>
 
-<!-- ══ ABOUT ══ -->
+<!-- ABOUT -->
 <div id="page-about" class="page" style="padding-top:68px">
   <section style="background:var(--bg2)">
     <div class="sec">
@@ -410,7 +344,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
         <div class="about-text">
           <h2>Tecnología de primer nivel,<br><span class="grad">al alcance de tu PYME</span></h2>
           <p>Gustux nació con una misión clara: que las pequeñas y medianas empresas chilenas pudieran acceder a las mismas herramientas tecnológicas que usan las grandes corporaciones, a precios justos y con acompañamiento real.</p>
-          <p>Somos un equipo de ingenieros, diseñadores y estrategas digitales apasionados por transformar negocios. Entendemos primero tu empresa y luego proponemos soluciones con impacto real y medible.</p>
+          <p>Somos un equipo de ingenieros, diseñadores y estrategas digitales apasionados por transformar negocios.</p>
           <div class="val-grid">
             <div class="val-item"><span style="font-size:1.2rem">🎯</span><div><h4>Orientados a resultados</h4><p>Medimos el éxito por el impacto en tu negocio.</p></div></div>
             <div class="val-item"><span style="font-size:1.2rem">🤝</span><div><h4>Aliados, no proveedores</h4><p>Nos involucramos como parte de tu equipo.</p></div></div>
@@ -419,7 +353,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
           </div>
         </div>
         <div class="about-visual">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px"><h4 style="font-weight:800;font-size:.9rem">Expertise por área</h4></div>
+          <div style="margin-bottom:20px"><h4 style="font-weight:800;font-size:.9rem">Expertise por área</h4></div>
           <div class="av-bar"><div class="av-bar-label"><span>Desarrollo Web & Apps</span><span>97%</span></div><div class="av-bar-track"><div class="av-bar-fill" style="width:97%"></div></div></div>
           <div class="av-bar"><div class="av-bar-label"><span>Auditoría TI</span><span>94%</span></div><div class="av-bar-track"><div class="av-bar-fill" style="width:94%"></div></div></div>
           <div class="av-bar"><div class="av-bar-label"><span>Business Intelligence</span><span>91%</span></div><div class="av-bar-track"><div class="av-bar-fill" style="width:91%"></div></div></div>
@@ -436,54 +370,44 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
       <p class="sec-sub" style="margin-bottom:40px">Profesionales comprometidos con tu éxito.</p>
       <div class="team-grid">
         <div class="team-card"><div class="team-avatar" style="background:var(--grad)">GR</div><h3>Gustavo Rojas</h3><div class="role">CEO & Fundador</div><p>Ingeniero en sistemas con 10+ años liderando transformación digital en PYMEs chilenas.</p><div class="team-skills"><span class="tag">Estrategia</span><span class="tag">Auditoría TI</span></div></div>
-        <div class="team-card"><div class="team-avatar" style="background:var(--grad2)">CM</div><h3>Catalina Muñoz</h3><div class="role">Lead Developer</div><p>Full-stack developer especializada en React, Node.js y arquitecturas cloud.</p><div class="team-skills"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">AWS</span></div></div>
-        <div class="team-card"><div class="team-avatar" style="background:var(--grad3)">AV</div><h3>Andrés Valdés</h3><div class="role">Analista BI & Datos</div><p>Experto en Power BI, visualización de datos y automatizaciones Make/Zapier.</p><div class="team-skills"><span class="tag">Power BI</span><span class="tag">Python</span></div></div>
+        <div class="team-card"><div class="team-avatar" style="background:var(--grad2)">CM</div><h3>Catalina Muñoz</h3><div class="role">Lead Developer</div><p>Full-stack developer especializada en React, Node.js y arquitecturas cloud.</p><div class="team-skills"><span class="tag">React</span><span class="tag">Node.js</span></div></div>
+        <div class="team-card"><div class="team-avatar" style="background:var(--grad3)">AV</div><h3>Andrés Valdés</h3><div class="role">Analista BI & Datos</div><p>Experto en Power BI, visualización de datos y automatizaciones.</p><div class="team-skills"><span class="tag">Power BI</span><span class="tag">Python</span></div></div>
         <div class="team-card"><div class="team-avatar" style="background:linear-gradient(135deg,#10b981,#0ea5e9)">PS</div><h3>Paola Soto</h3><div class="role">SEO & Marketing Digital</div><p>Especialista en posicionamiento orgánico, Meta Ads y estrategia de contenidos.</p><div class="team-skills"><span class="tag">SEO</span><span class="tag">Meta Ads</span></div></div>
       </div>
     </div>
   </section>
 </div>
 
-<!-- ══ CONTACT ══ -->
+<!-- CONTACT -->
 <div id="page-contact" class="page" style="padding-top:68px">
   <section>
     <div class="sec">
       <span class="sec-label">Hablemos</span>
       <h2 class="sec-title">Contacto</h2>
-      <p class="sec-sub">Respondemos en menos de 24 horas hábiles.</p>
+      <p class="sec-sub">Escríbenos por WhatsApp o correo y te respondemos de inmediato.</p>
       <div class="contact-grid">
-        <div class="form-box">
-          <h3>Envíanos un mensaje</h3>
-          <p class="sub">Recibirás confirmación automática por correo.</p>
-          <div class="fg-row">
-            <div class="fg"><label>Nombre</label><input type="text" id="c-name" placeholder="Juan Pérez"></div>
-            <div class="fg"><label>Email</label><input type="email" id="c-email" placeholder="juan@empresa.cl"></div>
-          </div>
-          <div class="fg-row">
-            <div class="fg"><label>Empresa</label><input type="text" id="c-company" placeholder="Mi Empresa SpA"></div>
-            <div class="fg"><label>Teléfono</label><input type="tel" id="c-phone" placeholder="+56 9 XXXX XXXX"></div>
-          </div>
-          <div class="fg"><label>Servicio de interés</label>
-            <select id="c-service"><option>Auditoría TI</option><option>Auditoría SEO</option><option>Auditoría Meta</option><option>Sitio Web</option><option>Aplicación</option><option>Dashboard</option><option>Automatización</option><option>Extensión</option><option>Hardware/Redes</option><option>Ciberseguridad</option><option>Otro</option></select>
-          </div>
-          <div class="fg"><label>Mensaje</label><textarea id="c-msg" placeholder="Cuéntanos sobre tu proyecto..."></textarea></div>
-          <button class="btn-primary" id="c-btn" style="width:100%" onclick="submitContact()">Enviar Mensaje →</button>
-          <div id="c-result" class="form-msg"></div>
+        <div class="wsp-card">
+          <div style="font-size:3rem;margin-bottom:12px">💬</div>
+          <h3>Escríbenos por WhatsApp</h3>
+          <p>La forma más rápida de contactarnos. Te respondemos en menos de 2 horas en horario hábil.</p>
+          <div class="wsp-number">+56 9 4585 1349</div>
+          <a href="https://wa.me/56945851349?text=Hola%20Gustux%2C%20me%20interesa%20más%20información%20sobre%20sus%20servicios" target="_blank">
+            <button class="btn-wsp" style="width:100%;padding:14px">💬 Abrir WhatsApp</button>
+          </a>
+          <div style="margin-top:14px;font-size:.8rem;color:var(--muted)">También puedes escribirnos a:<br><a href="mailto:gusmastertux@gmail.com" style="color:var(--accent2)">gusmastertux@gmail.com</a></div>
         </div>
         <div class="contact-side">
           <div class="info-block"><div class="ib-icon">📍</div><div class="ib-text"><h4>Ubicación</h4><p>Santiago, Chile<br>Atención presencial y remota</p></div></div>
-          <div class="info-block"><div class="ib-icon">📧</div><div class="ib-text"><h4>Correo</h4><p>contacto@gustux.cl<br>soporte@gustux.cl</p></div></div>
-          <div class="info-block"><div class="ib-icon">📱</div><div class="ib-text"><h4>WhatsApp</h4><p>+56 9 XXXX XXXX<br>Respuesta en menos de 2 horas</p></div></div>
+          <div class="info-block"><div class="ib-icon">📧</div><div class="ib-text"><h4>Correo</h4><p>gusmastertux@gmail.com</p></div></div>
+          <div class="info-block"><div class="ib-icon">📱</div><div class="ib-text"><h4>WhatsApp</h4><p>+56 9 4585 1349<br>Respuesta en menos de 2 horas</p></div></div>
           <div class="info-block"><div class="ib-icon">⏰</div><div class="ib-text"><h4>Horario</h4><p>Lun–Vie: 9:00–18:00<br>Sáb: 10:00–14:00</p></div></div>
-          <button class="btn-primary" style="width:100%" onclick="openModal('modal-schedule')">📅 Agendar Reunión Gratuita</button>
-          <button class="btn-outline" style="width:100%" onclick="openModal('modal-ticket')">🎫 Abrir Ticket de Soporte</button>
         </div>
       </div>
     </div>
   </section>
 </div>
 
-<!-- ══ LOGIN ══ -->
+<!-- LOGIN -->
 <div id="page-login" class="page">
   <div class="login-wrap">
     <div class="login-box">
@@ -495,24 +419,21 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
       <h2>Iniciar Sesión</h2>
       <p class="sub">Accede con tus credenciales</p>
       <div id="login-err" class="alert err" style="display:none"></div>
-      <div class="fg"><label>Email</label><input type="email" id="lu" placeholder="admin@gustux.cl"></div>
+      <div class="fg"><label>Email</label><input type="email" id="lu" placeholder="gus_mastertux@outlook.com"></div>
       <div class="fg"><label>Contraseña</label><input type="password" id="lp" placeholder="••••••••"></div>
       <button class="btn-primary" id="login-btn" style="width:100%;margin-top:8px" onclick="doLogin()">Ingresar al Panel →</button>
-      <div class="demo-hint">Credenciales creadas en Supabase Auth</div>
       <button class="btn-outline" style="width:100%;margin-top:12px" onclick="showPage('home')">← Volver al Sitio</button>
     </div>
   </div>
 </div>
 
-<!-- ══ ADMIN ══ -->
+<!-- ADMIN -->
 <div id="page-admin" class="page">
   <div class="admin-layout">
     <aside class="sidebar">
       <div class="sb-logo"><div class="logo"><div class="logo-mark">Gx</div><div class="logo-text" style="font-size:1.1rem">Gust<span>ux</span></div></div></div>
       <div class="sb-section">Principal</div>
       <div class="sb-item active" onclick="showAdmin('dashboard',this)"><div class="sb-icon">📊</div> Dashboard</div>
-      <div class="sb-item" onclick="showAdmin('tickets',this)"><div class="sb-icon">🎫</div> Tickets</div>
-      <div class="sb-item" onclick="showAdmin('agenda',this)"><div class="sb-icon">📅</div> Agenda</div>
       <div class="sb-section">Finanzas</div>
       <div class="sb-item" onclick="showAdmin('accounting',this)"><div class="sb-icon">💰</div> Contabilidad</div>
       <div class="sb-section">Gestión</div>
@@ -522,89 +443,40 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
       <div class="sb-item" onclick="showPage('home')"><div class="sb-icon">🌐</div> Ver Sitio</div>
       <div class="sb-item" onclick="doLogout()"><div class="sb-icon">🚪</div> Cerrar Sesión</div>
     </aside>
-    <div class="admin-main" id="admin-content">
-      <!-- DASHBOARD -->
+    <div class="admin-main">
       <div id="admin-dashboard">
         <div class="admin-hdr"><div><h2>Dashboard</h2><p>Resumen del negocio</p></div></div>
         <div class="dash-grid">
-          <div class="dc"><div class="dcl">Ingresos del Mes</div><div class="dcv" style="color:var(--success)" id="dash-income">$—</div><div class="dcc">Cargando...</div></div>
-          <div class="dc"><div class="dcl">Tickets Abiertos</div><div class="dcv" style="color:var(--warning)" id="dash-tickets">—</div><div class="dcc">Pendientes de atención</div></div>
-          <div class="dc"><div class="dcl">Citas esta Semana</div><div class="dcv" style="color:var(--accent2)" id="dash-appts">—</div><div class="dcc">Próximas citas</div></div>
-          <div class="dc"><div class="dcl">Egresos del Mes</div><div class="dcv" style="color:var(--danger)" id="dash-expense">$—</div><div class="dcc neg">Este mes</div></div>
-        </div>
-        <div class="tbl-wrap">
-          <div class="tbl-hdr"><h3>Tickets Recientes</h3><button class="btn-primary" style="padding:7px 14px;font-size:.78rem" onclick="showAdmin('tickets',null)">Ver todos</button></div>
-          <table><thead><tr><th>Número</th><th>Cliente</th><th>Asunto</th><th>Estado</th><th>Fecha</th></tr></thead>
-          <tbody id="dash-tickets-table"><tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">Cargando...</td></tr></tbody></table>
-        </div>
-        <div class="tbl-wrap">
-          <div class="tbl-hdr"><h3>Próximas Citas</h3></div>
-          <table><thead><tr><th>Cliente</th><th>Servicio</th><th>Fecha</th><th>Hora</th><th>Estado</th></tr></thead>
-          <tbody id="dash-appts-table"><tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">Cargando...</td></tr></tbody></table>
+          <div class="dc"><div class="dcl">Ingresos del Mes</div><div class="dcv" style="color:var(--success)" id="dash-income">$0</div></div>
+          <div class="dc"><div class="dcl">Egresos del Mes</div><div class="dcv" style="color:var(--danger)" id="dash-expense">$0</div></div>
+          <div class="dc"><div class="dcl">Balance Neto</div><div class="dcv" style="color:var(--accent2)" id="dash-balance">$0</div></div>
+          <div class="dc"><div class="dcl">Clientes Activos</div><div class="dcv">0</div></div>
         </div>
       </div>
-
-      <!-- TICKETS -->
-      <div id="admin-tickets" style="display:none">
-        <div class="admin-hdr"><div><h2>Tickets</h2><p>Gestión de soporte</p></div><button class="btn-primary" onclick="openModal('modal-ticket')">+ Nuevo Ticket</button></div>
-        <div id="tkt-list"><div style="text-align:center;color:var(--muted);padding:40px">Cargando tickets...</div></div>
-      </div>
-
-      <!-- AGENDA -->
-      <div id="admin-agenda" style="display:none">
-        <div class="admin-hdr"><div><h2>Agenda</h2><p>Citas y reuniones</p></div><button class="btn-primary" onclick="openModal('modal-schedule')">+ Nueva Cita</button></div>
-        <div class="agenda-grid">
-          <div class="cal-wrap">
-            <div class="cal-hdr"><h4>Junio 2025</h4><div style="display:flex;gap:6px"><button class="cal-nav">‹</button><button class="cal-nav">›</button></div></div>
-            <div class="cal-days-grid">
-              <div class="cal-dn">Do</div><div class="cal-dn">Lu</div><div class="cal-dn">Ma</div><div class="cal-dn">Mi</div><div class="cal-dn">Ju</div><div class="cal-dn">Vi</div><div class="cal-dn">Sá</div>
-              <div class="cal-d om">25</div><div class="cal-d om">26</div><div class="cal-d om">27</div><div class="cal-d om">28</div><div class="cal-d om">29</div><div class="cal-d om">30</div><div class="cal-d om">31</div>
-              <div class="cal-d">1</div><div class="cal-d">2</div><div class="cal-d">3</div><div class="cal-d">4</div><div class="cal-d">5</div><div class="cal-d">6</div><div class="cal-d">7</div>
-              <div class="cal-d">8</div><div class="cal-d">9</div><div class="cal-d has">10</div><div class="cal-d">11</div><div class="cal-d">12</div><div class="cal-d">13</div><div class="cal-d">14</div>
-              <div class="cal-d today">15</div><div class="cal-d has">16</div><div class="cal-d has">17</div><div class="cal-d">18</div><div class="cal-d">19</div><div class="cal-d">20</div><div class="cal-d">21</div>
-              <div class="cal-d">22</div><div class="cal-d">23</div><div class="cal-d">24</div><div class="cal-d has">25</div><div class="cal-d">26</div><div class="cal-d">27</div><div class="cal-d">28</div>
-              <div class="cal-d">29</div><div class="cal-d">30</div>
-            </div>
-          </div>
-          <div class="tbl-wrap" style="margin-bottom:0">
-            <div class="tbl-hdr"><h3>Citas Programadas</h3></div>
-            <table><thead><tr><th>Cliente</th><th>Servicio</th><th>Fecha & Hora</th><th>Estado</th></tr></thead>
-            <tbody id="appts-table"><tr><td colspan="4" style="text-align:center;color:var(--muted);padding:20px">Cargando...</td></tr></tbody></table>
-          </div>
-        </div>
-      </div>
-
-      <!-- ACCOUNTING -->
       <div id="admin-accounting" style="display:none">
-        <div class="admin-hdr"><div><h2>Contabilidad</h2><p>Ingresos y egresos</p></div><button class="btn-primary" onclick="openModal('modal-transaction')">+ Registrar Movimiento</button></div>
+        <div class="admin-hdr"><div><h2>Contabilidad</h2><p>Ingresos y egresos</p></div><button class="btn-primary" onclick="openModal('modal-transaction')">+ Registrar</button></div>
         <div class="acc-top">
-          <div class="acc-c inc"><div class="acl">💚 Ingresos del Mes</div><div class="acv" id="acc-income">$—</div></div>
-          <div class="acc-c exp"><div class="acl">❤️ Egresos del Mes</div><div class="acv" id="acc-expense">$—</div></div>
-          <div class="acc-c bal"><div class="acl">⚡ Balance Neto</div><div class="acv" id="acc-balance">$—</div></div>
+          <div class="acc-c inc"><div class="acl">💚 Ingresos</div><div class="acv" id="acc-income">$0</div></div>
+          <div class="acc-c exp"><div class="acl">❤️ Egresos</div><div class="acv" id="acc-expense">$0</div></div>
+          <div class="acc-c bal"><div class="acl">⚡ Balance</div><div class="acv" id="acc-balance">$0</div></div>
         </div>
         <div class="tbl-wrap">
           <div class="tbl-hdr"><h3>Movimientos</h3></div>
           <table><thead><tr><th>Fecha</th><th>Descripción</th><th>Categoría</th><th>Tipo</th><th>Monto</th></tr></thead>
-          <tbody id="tx-body"><tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">Cargando...</td></tr></tbody></table>
+          <tbody id="tx-body"><tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">Sin movimientos</td></tr></tbody></table>
         </div>
       </div>
-
-      <!-- USERS -->
       <div id="admin-users" style="display:none">
-        <div class="admin-hdr"><div><h2>Usuarios</h2><p>Accesos y permisos</p></div><button class="btn-primary" onclick="openModal('modal-user')">+ Crear Usuario</button></div>
+        <div class="admin-hdr"><div><h2>Usuarios</h2></div><button class="btn-primary" onclick="openModal('modal-user')">+ Crear Usuario</button></div>
         <div class="tbl-wrap">
-          <div class="tbl-hdr"><h3>Usuarios del Sistema</h3></div>
-          <table><thead><tr><th>Nombre</th><th>Email</th><th>Rol</th><th>Estado</th><th>Último Acceso</th></tr></thead>
-          <tbody id="usr-body"><tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">Cargando...</td></tr></tbody></table>
+          <table><thead><tr><th>Nombre</th><th>Email</th><th>Rol</th><th>Estado</th></tr></thead>
+          <tbody id="usr-body"><tr><td colspan="4" style="text-align:center;color:var(--muted);padding:20px">Cargando...</td></tr></tbody></table>
         </div>
       </div>
-
-      <!-- PRODUCTS ADMIN -->
       <div id="admin-products_admin" style="display:none">
-        <div class="admin-hdr"><div><h2>Productos</h2><p>Catálogo público</p></div><button class="btn-primary" onclick="openModal('modal-product')">+ Agregar Producto</button></div>
+        <div class="admin-hdr"><div><h2>Productos</h2></div><button class="btn-primary" onclick="openModal('modal-product')">+ Agregar</button></div>
         <div class="tbl-wrap">
-          <div class="tbl-hdr"><h3>Catálogo</h3></div>
-          <table><thead><tr><th>Producto</th><th>Categoría</th><th>Precio</th><th>Estado</th><th>Acciones</th></tr></thead>
+          <table><thead><tr><th>Producto</th><th>Categoría</th><th>Precio</th><th>Estado</th><th></th></tr></thead>
           <tbody id="prod-body"><tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">Cargando...</td></tr></tbody></table>
         </div>
       </div>
@@ -612,60 +484,10 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
   </div>
 </div>
 
-<!-- ══ MODALS ══ -->
-
-<!-- SCHEDULE -->
-<div id="modal-schedule" class="modal-overlay">
-  <div class="modal">
-    <div class="modal-hdr"><div><h3>📅 Agendar Consulta</h3><p class="sub">Recibirás confirmación por correo.</p></div><button class="modal-close" onclick="closeModal('modal-schedule')">×</button></div>
-    <div class="fg-row">
-      <div class="fg"><label>Nombre</label><input type="text" id="s-name" placeholder="Tu nombre"></div>
-      <div class="fg"><label>Email</label><input type="email" id="s-email" placeholder="tu@email.com"></div>
-    </div>
-    <div class="fg-row">
-      <div class="fg"><label>Teléfono</label><input type="tel" id="s-phone" placeholder="+56 9 XXXX XXXX"></div>
-      <div class="fg"><label>Servicio</label>
-        <select id="s-service"><option>Auditoría TI</option><option>Auditoría SEO</option><option>Sitio Web</option><option>Dashboard</option><option>Automatización</option><option>Consulta General</option></select>
-      </div>
-    </div>
-    <div class="fg-row">
-      <div class="fg"><label>Fecha</label><input type="date" id="s-date"></div>
-      <div class="fg"><label>Hora</label><input type="time" id="s-time"></div>
-    </div>
-    <div class="fg"><label>Mensaje (opcional)</label><textarea id="s-msg" placeholder="¿Algo que quieras comentar?"></textarea></div>
-    <button class="btn-primary" id="s-btn" style="width:100%" onclick="submitSchedule()">Confirmar Cita</button>
-    <div id="s-result" class="form-msg"></div>
-  </div>
-</div>
-
-<!-- TICKET -->
-<div id="modal-ticket" class="modal-overlay">
-  <div class="modal">
-    <div class="modal-hdr"><div><h3>🎫 Abrir Ticket</h3><p class="sub">Te notificamos en cada cambio de estado.</p></div><button class="modal-close" onclick="closeModal('modal-ticket')">×</button></div>
-    <div class="fg-row">
-      <div class="fg"><label>Nombre</label><input type="text" id="t-name" placeholder="Tu nombre"></div>
-      <div class="fg"><label>Email</label><input type="email" id="t-email" placeholder="tu@email.com"></div>
-    </div>
-    <div class="fg"><label>Empresa</label><input type="text" id="t-company" placeholder="Nombre de tu empresa"></div>
-    <div class="fg-row">
-      <div class="fg"><label>Categoría</label>
-        <select id="t-cat"><option>Soporte Técnico</option><option>Error en Sitio</option><option>App / Sistema</option><option>Dashboard</option><option>Facturación</option><option>Otro</option></select>
-      </div>
-      <div class="fg"><label>Prioridad</label>
-        <select id="t-priority"><option>Normal</option><option>Alta</option><option>Urgente</option></select>
-      </div>
-    </div>
-    <div class="fg"><label>Asunto</label><input type="text" id="t-subject" placeholder="Describe brevemente el problema"></div>
-    <div class="fg"><label>Descripción</label><textarea id="t-desc" placeholder="Detalla el problema con pasos para reproducirlo..."></textarea></div>
-    <button class="btn-primary" id="t-btn" style="width:100%" onclick="submitTicket()">Crear Ticket</button>
-    <div id="t-result" class="form-msg"></div>
-  </div>
-</div>
-
-<!-- TRANSACTION -->
+<!-- MODALS -->
 <div id="modal-transaction" class="modal-overlay">
   <div class="modal">
-    <div class="modal-hdr"><div><h3>💰 Registrar Movimiento</h3><p class="sub">Ingreso o egreso contable.</p></div><button class="modal-close" onclick="closeModal('modal-transaction')">×</button></div>
+    <div class="modal-hdr"><div><h3>💰 Registrar Movimiento</h3></div><button class="modal-close" onclick="closeModal('modal-transaction')">×</button></div>
     <div class="fg"><label>Tipo</label><select id="tx-type"><option>Ingreso</option><option>Egreso</option></select></div>
     <div class="fg"><label>Descripción</label><input type="text" id="tx-desc" placeholder="Ej: Pago servicio cliente X"></div>
     <div class="fg-row">
@@ -673,385 +495,144 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 24p
       <div class="fg"><label>Fecha</label><input type="date" id="tx-date"></div>
     </div>
     <div class="fg"><label>Monto (CLP)</label><input type="number" id="tx-amount" placeholder="150000"></div>
-    <button class="btn-primary" style="width:100%" onclick="addTx()">Registrar Movimiento</button>
+    <button class="btn-primary" style="width:100%" onclick="addTx()">Registrar</button>
   </div>
 </div>
 
-<!-- USER -->
 <div id="modal-user" class="modal-overlay">
   <div class="modal">
-    <div class="modal-hdr"><div><h3>👤 Crear Usuario</h3><p class="sub">Acceso al panel.</p></div><button class="modal-close" onclick="closeModal('modal-user')">×</button></div>
-    <div class="fg-row">
-      <div class="fg"><label>Nombre completo</label><input type="text" id="un" placeholder="Nombre Apellido"></div>
-      <div class="fg"><label>Email</label><input type="email" id="ue" placeholder="usuario@gustux.cl"></div>
-    </div>
+    <div class="modal-hdr"><div><h3>👤 Crear Usuario</h3></div><button class="modal-close" onclick="closeModal('modal-user')">×</button></div>
+    <div class="fg"><label>Nombre</label><input type="text" id="un" placeholder="Nombre Apellido"></div>
+    <div class="fg"><label>Email</label><input type="email" id="ue" placeholder="usuario@gustux.cl"></div>
     <div class="fg"><label>Rol</label><select id="ur"><option>Operador</option><option>Soporte</option><option>Contador</option><option>Administrador</option></select></div>
-    <div class="fg-row">
-      <div class="fg"><label>Contraseña</label><input type="password" id="up" placeholder="Mín. 8 caracteres"></div>
-      <div class="fg"><label>Confirmar</label><input type="password" placeholder="Repetir contraseña"></div>
-    </div>
     <button class="btn-primary" style="width:100%" onclick="createUser()">Crear Usuario</button>
   </div>
 </div>
 
-<!-- PRODUCT -->
 <div id="modal-product" class="modal-overlay">
   <div class="modal">
-    <div class="modal-hdr"><div><h3>📦 Agregar Producto</h3><p class="sub">Se publicará en el catálogo.</p></div><button class="modal-close" onclick="closeModal('modal-product')">×</button></div>
+    <div class="modal-hdr"><div><h3>📦 Agregar Producto</h3></div><button class="modal-close" onclick="closeModal('modal-product')">×</button></div>
     <div class="fg"><label>Nombre</label><input type="text" id="pn" placeholder="Nombre del producto"></div>
     <div class="fg-row">
-      <div class="fg"><label>Categoría</label><select id="pc"><option>Auditoría</option><option>Desarrollo Web</option><option>App</option><option>BI / Dashboard</option><option>SEO</option><option>Hardware</option><option>Automatización</option></select></div>
-      <div class="fg"><label>Precio (CLP)</label><input type="number" id="pp" placeholder="150000"></div>
+      <div class="fg"><label>Categoría</label><select id="pc"><option>Auditoría</option><option>Web</option><option>App</option><option>BI</option><option>SEO</option><option>Hardware</option></select></div>
+      <div class="fg"><label>Precio CLP</label><input type="number" id="pp" placeholder="150000"></div>
     </div>
     <div class="fg"><label>Descripción</label><textarea id="pd" placeholder="Describe el producto..."></textarea></div>
     <div class="fg-row">
-      <div class="fg"><label>Ícono (emoji)</label><input type="text" id="pi" placeholder="📊" maxlength="2"></div>
+      <div class="fg"><label>Ícono</label><input type="text" id="pi" placeholder="📊" maxlength="2"></div>
       <div class="fg"><label>Estado</label><select id="ps"><option>publicado</option><option>borrador</option></select></div>
     </div>
-    <button class="btn-primary" style="width:100%" onclick="addProduct()">Guardar Producto</button>
+    <button class="btn-primary" style="width:100%" onclick="addProduct()">Guardar</button>
   </div>
 </div>
 
 <div class="toast" id="toast"><span id="ti">✅</span><span id="tm" style="font-size:.88rem;font-weight:700"></span></div>
 
-<!-- ══ SUPABASE SDK ══ -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
-// ─── CONFIG ───────────────────────────────────────────────────
-// REEMPLAZA estos valores con los de tu proyecto Supabase
 const SUPABASE_URL = 'https://dxhmawexcbujbtqkqbth.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR4aG1hd2V4Y2J1Ymp0cWtxYnRoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE2NTY3MTMsImV4cCI6MjA5NzIzMjcxM30.mBvrdg78ur8KhRkiTZDbNNOalcWFmZgrn-18DhiYf1Y';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// ─── NAVEGACIÓN ───────────────────────────────────────────────
-function showPage(p) {
-  document.querySelectorAll('.page').forEach(x => x.classList.remove('active'));
-  document.getElementById('page-' + p).classList.add('active');
-  window.scrollTo(0, 0);
-  if (p === 'admin') loadDashboard();
+function showPage(p){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById('page-'+p).classList.add('active');window.scrollTo(0,0);if(p==='admin')loadDashboard();}
+function showAdmin(s,el){document.querySelectorAll('[id^="admin-"]').forEach(x=>x.style.display='none');document.getElementById('admin-'+s).style.display='block';document.querySelectorAll('.sb-item').forEach(x=>x.classList.remove('active'));if(el)el.classList.add('active');if(s==='accounting')loadTransactions();if(s==='users')loadUsers();if(s==='products_admin')loadProductsAdmin();}
+function openModal(id){document.getElementById(id).classList.add('open');}
+function closeModal(id){document.getElementById(id).classList.remove('open');}
+document.querySelectorAll('.modal-overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('open');}));
+function showToast(icon,msg){const t=document.getElementById('toast');document.getElementById('ti').textContent=icon;document.getElementById('tm').textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3500);}
+const fmt=n=>new Intl.NumberFormat('es-CL').format(n);
+const fmtDate=d=>new Date(d+'T12:00:00').toLocaleDateString('es-CL',{day:'2-digit',month:'short'});
+
+async function doLogin(){
+  const email=document.getElementById('lu').value.trim();
+  const pass=document.getElementById('lp').value;
+  const err=document.getElementById('login-err');
+  const btn=document.getElementById('login-btn');
+  btn.textContent='Ingresando...';btn.disabled=true;
+  const{error}=await sb.auth.signInWithPassword({email,password:pass});
+  if(error){err.textContent='Credenciales incorrectas.';err.style.display='block';btn.textContent='Ingresar al Panel →';btn.disabled=false;}
+  else{err.style.display='none';showPage('admin');btn.textContent='Ingresar al Panel →';btn.disabled=false;}
+}
+async function doLogout(){await sb.auth.signOut();showPage('home');}
+
+async function loadDashboard(){
+  const now=new Date();
+  const start=new Date(now.getFullYear(),now.getMonth(),1).toISOString().split('T')[0];
+  const{data:txs}=await sb.from('transactions').select('*').gte('transaction_date',start);
+  const income=(txs||[]).filter(t=>t.type==='Ingreso').reduce((a,t)=>a+t.amount,0);
+  const expense=(txs||[]).filter(t=>t.type==='Egreso').reduce((a,t)=>a+t.amount,0);
+  document.getElementById('dash-income').textContent='$'+fmt(income);
+  document.getElementById('dash-expense').textContent='$'+fmt(expense);
+  document.getElementById('dash-balance').textContent='$'+fmt(income-expense);
 }
 
-function showAdmin(s, el) {
-  document.querySelectorAll('[id^="admin-"]').forEach(x => x.style.display = 'none');
-  document.getElementById('admin-' + s).style.display = 'block';
-  document.querySelectorAll('.sb-item').forEach(x => x.classList.remove('active'));
-  if (el) el.classList.add('active');
-  if (s === 'dashboard') loadDashboard();
-  if (s === 'tickets') loadTickets();
-  if (s === 'agenda') loadAppointments();
-  if (s === 'accounting') loadTransactions();
-  if (s === 'users') loadUsers();
-  if (s === 'products_admin') loadProductsAdmin();
+async function loadTransactions(){
+  const{data}=await sb.from('transactions').select('*').order('transaction_date',{ascending:false});
+  const now=new Date();
+  const start=new Date(now.getFullYear(),now.getMonth(),1).toISOString().split('T')[0];
+  const m=(data||[]).filter(t=>t.transaction_date>=start);
+  const inc=m.filter(t=>t.type==='Ingreso').reduce((a,t)=>a+t.amount,0);
+  const exp=m.filter(t=>t.type==='Egreso').reduce((a,t)=>a+t.amount,0);
+  document.getElementById('acc-income').textContent='$'+fmt(inc);
+  document.getElementById('acc-expense').textContent='$'+fmt(exp);
+  document.getElementById('acc-balance').textContent='$'+fmt(inc-exp);
+  const tbl=document.getElementById('tx-body');
+  tbl.innerHTML=(data||[]).length?data.map(t=>`<tr><td>${fmtDate(t.transaction_date)}</td><td>${t.description}</td><td>${t.category}</td><td><span class="badge ${t.type==='Ingreso'?'bg-green':'bg-red'}">${t.type}</span></td><td style="color:var(--${t.type==='Ingreso'?'success':'danger'});font-weight:800">${t.type==='Ingreso'?'+':'-'}$${fmt(t.amount)}</td></tr>`).join(''):'<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">Sin movimientos</td></tr>';
 }
 
-// ─── AUTH ─────────────────────────────────────────────────────
-async function doLogin() {
-  const email = document.getElementById('lu').value.trim();
-  const pass = document.getElementById('lp').value;
-  const err = document.getElementById('login-err');
-  const btn = document.getElementById('login-btn');
-  btn.innerHTML = '<span class="spinner"></span>Ingresando...';
-  btn.disabled = true;
-  const { error } = await sb.auth.signInWithPassword({ email, password: pass });
-  if (error) {
-    err.textContent = 'Credenciales incorrectas. Inténtalo nuevamente.';
-    err.style.display = 'block';
-    btn.innerHTML = 'Ingresar al Panel →';
-    btn.disabled = false;
-  } else {
-    err.style.display = 'none';
-    showPage('admin');
-    btn.innerHTML = 'Ingresar al Panel →';
-    btn.disabled = false;
-  }
+async function addTx(){
+  const type=document.getElementById('tx-type').value;
+  const desc=document.getElementById('tx-desc').value.trim();
+  const cat=document.getElementById('tx-cat').value;
+  const amount=parseInt(document.getElementById('tx-amount').value)||0;
+  const date=document.getElementById('tx-date').value||new Date().toISOString().split('T')[0];
+  if(!desc||!amount){showToast('⚠️','Completa todos los campos');return;}
+  const{error}=await sb.from('transactions').insert([{type,description:desc,category:cat,amount,transaction_date:date}]);
+  if(!error){closeModal('modal-transaction');showToast('💰',`${type} registrado: $${fmt(amount)}`);loadTransactions();}
+  else showToast('❌','Error al registrar');
 }
 
-async function doLogout() {
-  await sb.auth.signOut();
-  showPage('home');
+async function loadUsers(){
+  const{data}=await sb.from('users').select('*').order('created_at');
+  const tbl=document.getElementById('usr-body');
+  tbl.innerHTML=(data||[]).length?data.map(u=>`<tr><td><strong>${u.name}</strong></td><td>${u.email}</td><td><span class="badge bg-${u.role==='administrador'?'blue':'bg-gray'}">${u.role}</span></td><td><span class="badge bg-${u.active?'green':'bg-yellow'}">${u.active?'Activo':'Inactivo'}</span></td></tr>`).join(''):'<tr><td colspan="4" style="text-align:center;color:var(--muted);padding:20px">Sin usuarios</td></tr>';
 }
 
-// ─── MODALS ───────────────────────────────────────────────────
-function openModal(id) { document.getElementById(id).classList.add('open'); }
-function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-document.querySelectorAll('.modal-overlay').forEach(o =>
-  o.addEventListener('click', e => { if (e.target === o) o.classList.remove('open'); })
-);
-
-// ─── TOAST ────────────────────────────────────────────────────
-function showToast(icon, msg) {
-  const t = document.getElementById('toast');
-  document.getElementById('ti').textContent = icon;
-  document.getElementById('tm').textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3500);
+async function createUser(){
+  const name=document.getElementById('un').value.trim();
+  const email=document.getElementById('ue').value.trim();
+  const role=document.getElementById('ur').value.toLowerCase();
+  if(!name||!email){showToast('⚠️','Completa los campos');return;}
+  const{error}=await sb.from('users').insert([{name,email,role,active:true}]);
+  if(!error){closeModal('modal-user');showToast('👤',`${name} creado.`);loadUsers();}
+  else showToast('❌','Error: '+error.message);
 }
 
-function setMsg(id, type, msg) {
-  const el = document.getElementById(id);
-  el.className = 'form-msg ' + type;
-  el.textContent = msg;
+async function loadProductsAdmin(){
+  const{data}=await sb.from('products').select('*').order('created_at',{ascending:false});
+  const tbl=document.getElementById('prod-body');
+  tbl.innerHTML=(data||[]).length?data.map(p=>`<tr><td><strong>${p.icon||'📦'} ${p.name}</strong></td><td>${p.category||'—'}</td><td>${p.price?'$'+fmt(p.price):'Consultar'}</td><td><span class="badge bg-${p.status==='publicado'?'green':'bg-yellow'}">${p.status}</span></td><td><button onclick="deleteProduct('${p.id}')" style="background:none;border:none;color:var(--danger);cursor:pointer">🗑</button></td></tr>`).join(''):'<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">Sin productos</td></tr>';
 }
 
-// ─── FORMAT ───────────────────────────────────────────────────
-const fmt = n => new Intl.NumberFormat('es-CL').format(n);
-const fmtDate = d => new Date(d + 'T12:00:00').toLocaleDateString('es-CL', { day: '2-digit', month: 'short' });
-const statusBadge = s => {
-  const map = { nuevo: 'bg-blue', en_proceso: 'bg-yellow', resuelto: 'bg-green', cerrado: 'bg-gray', pendiente: 'bg-yellow', confirmada: 'bg-blue', completada: 'bg-green', cancelada: 'bg-red' };
-  return `<span class="badge ${map[s] || 'bg-gray'}">${s.replace('_', ' ')}</span>`;
-};
-
-// ─── SUBMIT TICKET ────────────────────────────────────────────
-async function submitTicket() {
-  const btn = document.getElementById('t-btn');
-  const body = {
-    client_name: document.getElementById('t-name').value.trim(),
-    client_email: document.getElementById('t-email').value.trim(),
-    company: document.getElementById('t-company').value.trim(),
-    category: document.getElementById('t-cat').value,
-    priority: document.getElementById('t-priority').value.toLowerCase(),
-    subject: document.getElementById('t-subject').value.trim(),
-    description: document.getElementById('t-desc').value.trim()
-  };
-  if (!body.client_name || !body.client_email || !body.subject) {
-    setMsg('t-result', 'err', '⚠️ Completa los campos requeridos: nombre, email y asunto.');
-    return;
-  }
-  btn.innerHTML = '<span class="spinner"></span>Enviando...';
-  btn.disabled = true;
-  try {
-    const res = await fetch('/api/ticket', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
-    const data = await res.json();
-    if (data.success) {
-      setMsg('t-result', 'ok', `✅ Ticket ${data.ticket_number} creado. Revisa tu correo para el número de seguimiento.`);
-      btn.innerHTML = 'Crear Ticket';
-      btn.disabled = false;
-    } else throw new Error(data.error);
-  } catch (e) {
-    setMsg('t-result', 'err', '❌ Error al crear el ticket. Intenta nuevamente.');
-    btn.innerHTML = 'Crear Ticket';
-    btn.disabled = false;
-  }
+async function addProduct(){
+  const name=document.getElementById('pn').value.trim();
+  const category=document.getElementById('pc').value;
+  const price=parseInt(document.getElementById('pp').value)||null;
+  const description=document.getElementById('pd').value.trim();
+  const icon=document.getElementById('pi').value||'📦';
+  const status=document.getElementById('ps').value;
+  if(!name){showToast('⚠️','El nombre es requerido');return;}
+  const{error}=await sb.from('products').insert([{name,category,price,description,icon,status}]);
+  if(!error){closeModal('modal-product');showToast('📦',`"${name}" guardado.`);loadProductsAdmin();}
 }
 
-// ─── SUBMIT SCHEDULE ──────────────────────────────────────────
-async function submitSchedule() {
-  const btn = document.getElementById('s-btn');
-  const body = {
-    client_name: document.getElementById('s-name').value.trim(),
-    client_email: document.getElementById('s-email').value.trim(),
-    client_phone: document.getElementById('s-phone').value.trim(),
-    service: document.getElementById('s-service').value,
-    appointment_date: document.getElementById('s-date').value,
-    appointment_time: document.getElementById('s-time').value,
-    message: document.getElementById('s-msg').value.trim()
-  };
-  if (!body.client_name || !body.client_email || !body.appointment_date || !body.appointment_time) {
-    setMsg('s-result', 'err', '⚠️ Completa nombre, email, fecha y hora.');
-    return;
-  }
-  btn.innerHTML = '<span class="spinner"></span>Agendando...';
-  btn.disabled = true;
-  try {
-    const res = await fetch('/api/appointment', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
-    const data = await res.json();
-    if (data.success) {
-      setMsg('s-result', 'ok', '✅ Cita agendada. Recibirás un correo de confirmación en minutos.');
-      btn.innerHTML = 'Confirmar Cita';
-      btn.disabled = false;
-    } else throw new Error(data.error);
-  } catch (e) {
-    setMsg('s-result', 'err', '❌ Error al agendar. Intenta nuevamente o escríbenos directo.');
-    btn.innerHTML = 'Confirmar Cita';
-    btn.disabled = false;
-  }
+async function deleteProduct(id){
+  if(!confirm('¿Eliminar?'))return;
+  await sb.from('products').delete().eq('id',id);
+  showToast('🗑','Eliminado.');loadProductsAdmin();
 }
 
-// ─── SUBMIT CONTACT ───────────────────────────────────────────
-async function submitContact() {
-  const btn = document.getElementById('c-btn');
-  const body = {
-    name: document.getElementById('c-name').value.trim(),
-    email: document.getElementById('c-email').value.trim(),
-    phone: document.getElementById('c-phone').value.trim(),
-    company: document.getElementById('c-company').value.trim(),
-    service: document.getElementById('c-service').value,
-    message: document.getElementById('c-msg').value.trim()
-  };
-  if (!body.name || !body.email) { setMsg('c-result', 'err', '⚠️ Nombre y email son requeridos.'); return; }
-  btn.innerHTML = '<span class="spinner"></span>Enviando...';
-  btn.disabled = true;
-  const { error } = await sb.from('contacts').insert([body]);
-  if (!error) {
-    setMsg('c-result', 'ok', '✅ Mensaje enviado. Te contactaremos muy pronto.');
-  } else {
-    setMsg('c-result', 'err', '❌ Error al enviar. Escríbenos a contacto@gustux.cl');
-  }
-  btn.innerHTML = 'Enviar Mensaje →';
-  btn.disabled = false;
-}
-
-// ─── LOAD DASHBOARD ───────────────────────────────────────────
-async function loadDashboard() {
-  const now = new Date();
-  const startMonth = new Date(now.getFullYear(), now.getMonth(), 1).toISOString().split('T')[0];
-
-  const [{ data: txs }, { data: tkts }, { data: appts }] = await Promise.all([
-    sb.from('transactions').select('*').gte('transaction_date', startMonth),
-    sb.from('tickets').select('*').order('created_at', { ascending: false }).limit(5),
-    sb.from('appointments').select('*').gte('appointment_date', now.toISOString().split('T')[0]).order('appointment_date').limit(5)
-  ]);
-
-  const income = (txs || []).filter(t => t.type === 'Ingreso').reduce((a, t) => a + t.amount, 0);
-  const expense = (txs || []).filter(t => t.type === 'Egreso').reduce((a, t) => a + t.amount, 0);
-  const openTkts = (tkts || []).filter(t => t.status !== 'resuelto' && t.status !== 'cerrado').length;
-
-  document.getElementById('dash-income').textContent = '$' + fmt(income);
-  document.getElementById('dash-expense').textContent = '$' + fmt(expense);
-  document.getElementById('dash-tickets').textContent = openTkts;
-  document.getElementById('dash-appts').textContent = (appts || []).length;
-
-  const tktTbl = document.getElementById('dash-tickets-table');
-  tktTbl.innerHTML = (tkts || []).length ? tkts.map(t =>
-    `<tr><td>#TK-${String(t.ticket_number).padStart(3,'0')}</td><td>${t.client_name}</td><td>${t.subject}</td><td>${statusBadge(t.status)}</td><td>${fmtDate(t.created_at.split('T')[0])}</td></tr>`
-  ).join('') : '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">Sin tickets aún</td></tr>';
-
-  const apptTbl = document.getElementById('dash-appts-table');
-  apptTbl.innerHTML = (appts || []).length ? appts.map(a =>
-    `<tr><td>${a.client_name}</td><td>${a.service}</td><td>${fmtDate(a.appointment_date)}</td><td>${a.appointment_time?.slice(0,5)}</td><td>${statusBadge(a.status)}</td></tr>`
-  ).join('') : '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">Sin citas próximas</td></tr>';
-}
-
-// ─── LOAD TICKETS ─────────────────────────────────────────────
-async function loadTickets() {
-  const { data } = await sb.from('tickets').select('*').order('created_at', { ascending: false });
-  const list = document.getElementById('tkt-list');
-  if (!data || !data.length) { list.innerHTML = '<div style="text-align:center;color:var(--muted);padding:40px">Sin tickets registrados</div>'; return; }
-  const dotColor = { nuevo: 'var(--accent)', en_proceso: 'var(--warning)', resuelto: 'var(--success)', cerrado: 'var(--muted)' };
-  list.innerHTML = data.map(t => `
-    <div class="tkt-card">
-      <div class="tkt-dot" style="background:${dotColor[t.status] || 'var(--muted)'}"></div>
-      <div class="tkt-body">
-        <div class="tkt-id">#TK-${String(t.ticket_number).padStart(3,'0')} · ${t.client_name} · ${fmtDate(t.created_at.split('T')[0])}</div>
-        <h4>${t.subject}</h4>
-        <p>${t.description || '—'}</p>
-        <div class="tkt-meta">
-          ${statusBadge(t.status)}
-          <span class="badge bg-gray">${t.category}</span>
-          <span class="badge bg-${t.priority==='urgente'?'red':t.priority==='alta'?'yellow':'gray'}">${t.priority}</span>
-          ${t.status !== 'resuelto' && t.status !== 'cerrado' ?
-            `<button class="tkt-action" onclick="updateTicket('${t.id}','${t.status==='nuevo'?'en_proceso':'resuelto'}',this)">
-              ${t.status === 'nuevo' ? 'Iniciar →' : 'Marcar resuelto ✓'}
-            </button>` : ''}
-        </div>
-      </div>
-    </div>`).join('');
-}
-
-async function updateTicket(id, newStatus, btn) {
-  btn.textContent = '...';
-  const { error } = await sb.from('tickets').update({ status: newStatus }).eq('id', id);
-  if (!error) { showToast('🎫', `Ticket → ${newStatus}. Cliente notificado.`); loadTickets(); }
-}
-
-// ─── LOAD APPOINTMENTS ────────────────────────────────────────
-async function loadAppointments() {
-  const { data } = await sb.from('appointments').select('*').order('appointment_date').order('appointment_time');
-  const tbl = document.getElementById('appts-table');
-  tbl.innerHTML = (data || []).length ? data.map(a =>
-    `<tr><td>${a.client_name}</td><td>${a.service}</td><td>${fmtDate(a.appointment_date)} · ${a.appointment_time?.slice(0,5)}</td><td>${statusBadge(a.status)}</td></tr>`
-  ).join('') : '<tr><td colspan="4" style="text-align:center;color:var(--muted);padding:20px">Sin citas registradas</td></tr>';
-}
-
-// ─── LOAD TRANSACTIONS ────────────────────────────────────────
-async function loadTransactions() {
-  const { data } = await sb.from('transactions').select('*').order('transaction_date', { ascending: false });
-  const now = new Date();
-  const startMonth = new Date(now.getFullYear(), now.getMonth(), 1).toISOString().split('T')[0];
-  const thisMonth = (data || []).filter(t => t.transaction_date >= startMonth);
-  const income = thisMonth.filter(t => t.type === 'Ingreso').reduce((a, t) => a + t.amount, 0);
-  const expense = thisMonth.filter(t => t.type === 'Egreso').reduce((a, t) => a + t.amount, 0);
-  document.getElementById('acc-income').textContent = '$' + fmt(income);
-  document.getElementById('acc-expense').textContent = '$' + fmt(expense);
-  document.getElementById('acc-balance').textContent = '$' + fmt(income - expense);
-  const tbl = document.getElementById('tx-body');
-  tbl.innerHTML = (data || []).length ? data.map(t =>
-    `<tr><td>${fmtDate(t.transaction_date)}</td><td>${t.description}</td><td>${t.category}</td>
-    <td><span class="badge ${t.type==='Ingreso'?'bg-green':'bg-red'}">${t.type}</span></td>
-    <td style="color:var(--${t.type==='Ingreso'?'success':'danger'});font-weight:800">${t.type==='Ingreso'?'+':'-'}$${fmt(t.amount)}</td></tr>`
-  ).join('') : '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">Sin movimientos</td></tr>';
-}
-
-async function addTx() {
-  const type = document.getElementById('tx-type').value;
-  const desc = document.getElementById('tx-desc').value.trim();
-  const cat = document.getElementById('tx-cat').value;
-  const amount = parseInt(document.getElementById('tx-amount').value) || 0;
-  const date = document.getElementById('tx-date').value || new Date().toISOString().split('T')[0];
-  if (!desc || !amount) { showToast('⚠️', 'Completa todos los campos'); return; }
-  const { error } = await sb.from('transactions').insert([{ type, description: desc, category: cat, amount, transaction_date: date }]);
-  if (!error) { closeModal('modal-transaction'); showToast('💰', `${type} registrado: $${fmt(amount)}`); loadTransactions(); }
-}
-
-// ─── LOAD USERS ───────────────────────────────────────────────
-async function loadUsers() {
-  const { data } = await sb.from('users').select('*').order('created_at');
-  const tbl = document.getElementById('usr-body');
-  tbl.innerHTML = (data || []).length ? data.map(u =>
-    `<tr><td><strong>${u.name}</strong></td><td>${u.email}</td>
-    <td><span class="badge bg-${u.role==='administrador'?'blue':'gray'}">${u.role}</span></td>
-    <td><span class="badge bg-${u.active?'green':'yellow'}">${u.active?'Activo':'Inactivo'}</span></td>
-    <td>${u.last_login ? fmtDate(u.last_login.split('T')[0]) : 'Nunca'}</td></tr>`
-  ).join('') : '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">Sin usuarios</td></tr>';
-}
-
-async function createUser() {
-  const name = document.getElementById('un').value.trim();
-  const email = document.getElementById('ue').value.trim();
-  const role = document.getElementById('ur').value.toLowerCase();
-  const pass = document.getElementById('up').value;
-  if (!name || !email || !pass) { showToast('⚠️', 'Completa todos los campos'); return; }
-  const { error } = await sb.from('users').insert([{ name, email, role, active: true }]);
-  if (!error) { closeModal('modal-user'); showToast('👤', `${name} creado exitosamente.`); loadUsers(); }
-  else showToast('❌', 'Error: ' + error.message);
-}
-
-// ─── LOAD PRODUCTS ADMIN ──────────────────────────────────────
-async function loadProductsAdmin() {
-  const { data } = await sb.from('products').select('*').order('created_at', { ascending: false });
-  const tbl = document.getElementById('prod-body');
-  tbl.innerHTML = (data || []).length ? data.map(p =>
-    `<tr><td><strong>${p.icon || '📦'} ${p.name}</strong></td><td>${p.category || '—'}</td>
-    <td>${p.price ? '$' + fmt(p.price) : 'Consultar'}</td>
-    <td><span class="badge bg-${p.status==='publicado'?'green':'yellow'}">${p.status}</span></td>
-    <td>
-      <button onclick="deleteProduct('${p.id}')" style="background:none;border:none;color:var(--danger);cursor:pointer;font-size:1rem">🗑</button>
-    </td></tr>`
-  ).join('') : '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">Sin productos</td></tr>';
-}
-
-async function addProduct() {
-  const name = document.getElementById('pn').value.trim();
-  const category = document.getElementById('pc').value;
-  const price = parseInt(document.getElementById('pp').value) || null;
-  const description = document.getElementById('pd').value.trim();
-  const icon = document.getElementById('pi').value || '📦';
-  const status = document.getElementById('ps').value;
-  if (!name) { showToast('⚠️', 'El nombre es requerido'); return; }
-  const { error } = await sb.from('products').insert([{ name, category, price, description, icon, status }]);
-  if (!error) { closeModal('modal-product'); showToast('📦', `"${name}" ${status}.`); loadProductsAdmin(); }
-}
-
-async function deleteProduct(id) {
-  if (!confirm('¿Eliminar este producto?')) return;
-  await sb.from('products').delete().eq('id', id);
-  showToast('🗑', 'Producto eliminado.'); loadProductsAdmin();
-}
-
-// ─── KEYBOARD ─────────────────────────────────────────────────
-document.addEventListener('keydown', e => {
-  if (e.key === 'Enter' && document.getElementById('page-login').classList.contains('active')) doLogin();
-});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&document.getElementById('page-login').classList.contains('active'))doLogin();});
 </script>
 </body>
 </html>
