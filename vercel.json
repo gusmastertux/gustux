@@ -1,6 +1,7 @@
+
 {
   "version": 2,
-  "name": "gustux",
+  "name": "gustux-cl",
   "builds": [
     {
       "src": "api/*.js",
@@ -14,14 +15,5 @@
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/$1" },
     { "src": "/(.*)", "dest": "/index.html" }
-  ],
-  "env": {
-    "SUPABASE_URL": "@supabase_url",
-    "SUPABASE_ANON_KEY": "@supabase_anon_key",
-    "SUPABASE_SERVICE_KEY": "@supabase_service_key",
-    "RESEND_API_KEY": "@resend_api_key",
-    "FROM_EMAIL": "@from_email",
-    "ADMIN_EMAIL": "@admin_email",
-    "SITE_URL": "@site_url"
-  }
+  ]
 }
