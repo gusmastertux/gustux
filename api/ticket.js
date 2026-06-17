@@ -1,0 +1,93 @@
+// api/ticket.js
+// Función serverless: crear ticket en Supabase + enviar correo al cliente y admin
+
+const { createClient } = require('@supabase/supabase-js');
+const { Resend } = require('resend');
+
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_SERVICE_KEY
+);
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+module.exports = async (req, res) => {
+  // CORS
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  if (req.method === 'OPTIONS') return res.status(200).end();
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Método no permitido' });
+
+  try {
+    const { client_name, client_email, company, category, priority, subject, description } = req.body;
+
+    // Validar campos requeridos
+    if (!client_name || !client_email || !subject) {
+      return res.status(400).json({ error: 'Faltan campos requeridos' });
+    }
+
+    // 1. Guardar ticket en Supabase
+    const { data: ticket, error } = await supabase
+      .from('tickets')
+      .insert([{ client_name, client_email, company, category, priority, subject, description, status: 'nuevo' }])
+      .select()
+      .single();
+
+    if (error) throw error;
+
+    const ticketNum = `TK-${String(ticket.ticket_number).padStart(3, '0')}`;
+
+    // 2. Correo al CLIENTE
+    await resend.emails.send({
+      from: process.env.FROM_EMAIL,
+      to: client_email,
+      subject: `[${ticketNum}] Ticket recibido — ${subject}`,
+      html: `
+        <div style="font-family:sans-serif;max-width:560px;margin:0 auto;background:#080c14;color:#f0f4ff;padding:32px;border-radius:16px">
+          <div style="text-align:center;margin-bottom:24px">
+            <span style="background:linear-gradient(135deg,#2563eb,#0ea5e9);-webkit-background-clip:text;color:#2563eb;font-size:1.8rem;font-weight:900">Gustux</span>
+          </div>
+          <h2 style="color:#f0f4ff;margin-bottom:8px">Ticket creado exitosamente ✅</h2>
+          <p style="color:#7a8ba8">Hemos recibido tu solicitud. Te mantendremos informado por este correo en cada cambio de estado.</p>
+          <div style="background:#111827;border:1px solid #1f2d45;border-radius:12px;padding:20px;margin:20px 0">
+            <p style="margin:0 0 8px"><strong>Número:</strong> <span style="color:#0ea5e9">${ticketNum}</span></p>
+            <p style="margin:0 0 8px"><strong>Asunto:</strong> ${subject}</p>
+            <p style="margin:0 0 8px"><strong>Categoría:</strong> ${category}</p>
+            <p style="margin:0 0 8px"><strong>Prioridad:</strong> ${priority}</p>
+            <p style="margin:0"><strong>Estado:</strong> <span style="color:#fbbf24">Nuevo</span></p>
+          </div>
+          <p style="color:#7a8ba8;font-size:.85rem">Tiempo estimado de respuesta: 24 horas hábiles.<br>Para consultas escribe a soporte@gustux.cl</p>
+        </div>
+      `
+    });
+
+    // 3. Correo al ADMIN
+    await resend.emails.send({
+      from: process.env.FROM_EMAIL,
+      to: process.env.ADMIN_EMAIL,
+      subject: `🎫 Nuevo ticket [${ticketNum}] — ${subject}`,
+      html: `
+        <div style="font-family:sans-serif;max-width:560px;margin:0 auto;padding:24px">
+          <h2>Nuevo ticket recibido</h2>
+          <table style="width:100%;border-collapse:collapse">
+            <tr><td style="padding:8px;border-bottom:1px solid #eee"><strong>Número</strong></td><td style="padding:8px;border-bottom:1px solid #eee">${ticketNum}</td></tr>
+            <tr><td style="padding:8px;border-bottom:1px solid #eee"><strong>Cliente</strong></td><td style="padding:8px;border-bottom:1px solid #eee">${client_name}</td></tr>
+            <tr><td style="padding:8px;border-bottom:1px solid #eee"><strong>Email</strong></td><td style="padding:8px;border-bottom:1px solid #eee">${client_email}</td></tr>
+            <tr><td style="padding:8px;border-bottom:1px solid #eee"><strong>Empresa</strong></td><td style="padding:8px;border-bottom:1px solid #eee">${company || '—'}</td></tr>
+            <tr><td style="padding:8px;border-bottom:1px solid #eee"><strong>Categoría</strong></td><td style="padding:8px;border-bottom:1px solid #eee">${category}</td></tr>
+            <tr><td style="padding:8px;border-bottom:1px solid #eee"><strong>Prioridad</strong></td><td style="padding:8px;border-bottom:1px solid #eee">${priority}</td></tr>
+            <tr><td style="padding:8px;border-bottom:1px solid #eee"><strong>Asunto</strong></td><td style="padding:8px;border-bottom:1px solid #eee">${subject}</td></tr>
+            <tr><td style="padding:8px"><strong>Descripción</strong></td><td style="padding:8px">${description || '—'}</td></tr>
+          </table>
+          <a href="${process.env.SITE_URL}/admin" style="display:inline-block;margin-top:16px;background:#2563eb;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:700">Ver en Panel Admin →</a>
+        </div>
+      `
+    });
+
+    return res.status(200).json({ success: true, ticket_number: ticketNum, id: ticket.id });
+
+  } catch (err) {
+    console.error('Error en ticket.js:', err);
+    return res.status(500).json({ error: 'Error interno del servidor' });
+  }
+};
